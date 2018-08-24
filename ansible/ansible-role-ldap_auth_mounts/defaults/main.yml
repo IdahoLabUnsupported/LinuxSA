@@ -1,0 +1,3 @@
+---
+ldap_base_dn: dc=my,dc=domain,dc=com
+ldap_uri: ldap://LDAPSERVER ldap://LDAPSERVER2

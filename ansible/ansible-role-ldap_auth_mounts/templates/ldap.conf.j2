@@ -1,0 +1,10 @@
+ldap_version 3
+pam_password exop
+
+URI {{ ldap_uri }}
+BASE {{ ldap_base_dn }}
+
+ssl start_tls
+tls_cacertfile {{ cert_path }}/cacert.pem
+
+nss_initgroups_ignoreusers backup,bin,colord,daemon,games,ganglia,gitlab-prometheus,gitlab-psql,gitlab-redis,gitlab-www,gnats,irc,landscape,libuuid,list,lp,mail,man,messagebus,nagios,news,ntp,postfix,proxy,root,sshd,statd,sync,sys,syslog,uucp,www-data

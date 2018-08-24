@@ -1,0 +1,2 @@
+ca_crt_dir: /etc/pki/trust/anchors
+ca_update_cmd: update-ca-certificates

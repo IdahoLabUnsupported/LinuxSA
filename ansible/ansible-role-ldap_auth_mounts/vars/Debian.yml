@@ -1,0 +1,21 @@
+---
+
+package_list:
+    - autofs-ldap
+# includes autofs, nfs-common etc
+    - libnss-ldapd
+# includes nscd, nslcd, nslcd-utils (is not libnss-ldap)
+
+# restarting nscd here was required, enables the moosetest add to sudo group without creating a local moosetest user.
+service_list:
+    - nscd
+    - nslcd
+    - autofs
+
+cert_path: /etc/ssl/certs
+ldap_conf_file: /etc/ldap/ldap.conf
+nslcd_conf_file: /etc/nslcd.conf
+nslcd_user: nslcd
+nslcd_group: nslcd
+nfsmount_conf_file: /etc/nfsmount.conf
+

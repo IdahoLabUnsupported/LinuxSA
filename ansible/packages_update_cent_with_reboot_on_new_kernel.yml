@@ -1,0 +1,40 @@
+- hosts: '{{target}}'
+  become: true
+  ignore_errors: yes 
+  tasks:
+    - name: Make sure all OS patches are applied
+      yum: name='*'  state=latest  update_cache=yes
+      when: ansible_distribution == "CentOS"
+    - name: Install python 2
+      raw: test -e /usr/bin/python || (yum install -y python)
+      when: ansible_distribution == "CentOS"
+    - name: Install perl
+      raw: test -e /usr/bin/perl || (yum install -y perl)
+      when: ansible_distribution == "CentOS"
+
+
+    - name: Check for reboot hint.
+      shell: LAST_KERNEL=$(rpm -q --last kernel | perl -pe 's/^kernel-(\S+).*/$1/' | head -1); CURRENT_KERNEL=$(uname -r); if [ $LAST_KERNEL != $CURRENT_KERNEL ]; then echo 'reboot'; else echo 'no'; fi
+      ignore_errors: true
+      register: reboot_hint_centos
+      when: ansible_distribution == "CentOS"
+
+
+    - name: Rebooting centos
+      no_log: True
+      command: shutdown -r now "Reboot required for updated kernel"
+      async: 0
+      poll: 0
+      ignore_errors: true
+      when:
+        - reboot_hint_centos.stdout.find("reboot") != -1
+        - ansible_distribution == "CentOS"
+      register: rebooting_centos
+
+
+    - name: Wait for thing to reboot...
+      pause: seconds=300
+      when:
+        - ansible_distribution == "CentOS"
+        - rebooting_centos|changed
+

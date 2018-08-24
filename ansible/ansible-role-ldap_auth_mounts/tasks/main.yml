@@ -1,0 +1,55 @@
+---
+- name: Add the OS specific variables
+  include_vars: '{{ ansible_os_family }}.yml'
+
+- name: Install list of packages
+  package: name={{item}} state=present
+  with_items: "{{ package_list }}"
+
+- name: Copy nfsmount.conf configure file.
+  template: src=nfsmount.conf.j2 dest={{ nfsmount_conf_file }}
+
+- name: Copy default/autofs configure file.
+  template: src=default_autofs.j2 dest=/etc/default/autofs
+  when: ansible_os_family == 'Debian'
+
+- name: Create cacert directory
+  file: path={{ cert_path }} state=directory
+
+- name: Download cacert.pem
+  get_url:
+    url: http://cert/file
+    dest: "{{ cert_path }}/cacert.pem"
+
+- name: Copy ldap.conf configure file.
+  template: src=ldap.conf.j2 dest={{ ldap_conf_file }}
+
+- name: Copy nslcd.conf configure file.
+  template: src=nslcd.conf.j2 dest={{ nslcd_conf_file }}
+
+- name: Copy nsswitch.conf configure file.
+  template: src=nsswitch.conf.j2 dest=/etc/nsswitch.conf
+
+- name: Copy autofs_ldap configure file.
+  template: src=autofs_ldap_auth.conf.j2 dest=/etc/autofs_ldap_auth.conf
+
+#- name: Copy auto.master configure file.
+#  template: src=auto.master.j2 dest=/etc/auto.master
+
+- name: Copy pam configure file.
+  block:
+    - template: src=RedHat_system-auth.j2 dest=/etc/pam.d/system-auth
+    - command: rm /etc/pam.d/system-auth
+    - command: rm /etc/pam.d/password-auth
+    - file: src=/etc/pam.d/system-auth dest=/etc/pam.d/password-auth state=link
+    - file: src=/etc/pam.d/system-auth dest=/etc/pam.d/system-auth state=link
+  when: ansible_os_family == 'RedHat'
+
+- name: restart ldap related services
+  service: name={{ item }} state=restarted                  
+  with_items: "{{ service_list }}"
+
+- name: enable ldap related services
+  service: name={{ item }} enabled=yes
+  with_items: "{{ service_list }}"
+

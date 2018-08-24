@@ -1,0 +1,40 @@
+- hosts: '{{target}}'
+  become: true
+  ignore_errors: yes 
+  tasks:
+    - name: install system updates for ubuntu systems
+      apt: upgrade=dist update_cache=yes
+      when: ansible_distribution == "Ubuntu"
+    - name: Install python 2
+      raw: test -e /usr/bin/python || (apt-get update && apt-get install -y python)
+      when: ansible_distribution == "Ubuntu"
+    - name: Install perl 
+      raw: test -e /usr/bin/perl || (apt-get update && apt-get install -y perl)
+      when: ansible_distribution == "Ubuntu"
+
+
+    - name: Check for reboot hint.
+      shell: LAST_KERNEL=$(dpkg --list | grep -P 'linux-image-\d' | perl -pe 's/.*?linux-image-(\S+).*/$1/' | sort -V |  tail -1); CURRENT_KERNEL=$(uname -r); if [ "$LAST_KERNEL" != "$CURRENT_KERNEL" ]; then echo 'reboot'; else echo 'no'; fi
+      ignore_errors: true
+      register: reboot_hint_ubuntu
+      when: ansible_distribution == "Ubuntu"
+
+
+    - name: Rebooting ubuntu
+      no_log: True
+      command: shutdown -r now "Reboot required for updated kernel"
+      async: 0
+      poll: 0
+      ignore_errors: true
+      when:
+        - reboot_hint_ubuntu.stdout.find("reboot") != -1
+        - ansible_distribution == "Ubuntu"
+      register: rebooting_ubuntu
+
+
+    - name: Wait for thing to reboot...
+      pause: seconds=300
+      when:
+        - ansible_distribution == "Ubuntu"
+        - rebooting_ubuntu|changed
+  

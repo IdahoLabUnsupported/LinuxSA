@@ -1,0 +1,8 @@
+uid {{ nslcd_user }}
+gid {{ nslcd_group }}
+
+uri {{ ldap_uri }}
+base {{ ldap_base_dn }}
+
+ssl start_tls
+tls_cacertfile {{ cert_path }}/cacert.pem

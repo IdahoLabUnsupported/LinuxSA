@@ -1,0 +1,20 @@
+---
+# ensure ipv6 is on, or hacks in place, or nfsv3 will fail on RHEL7
+
+package_list:
+    - authconfig
+    - nfs-utils
+    - autofs
+    - openldap-clients
+
+service_list:
+    - autofs
+    - nscd
+    - nslcd
+
+cert_path: /etc/openldap/cacerts
+ldap_conf_file: /etc/openldap/ldap.conf
+nslcd_conf_file: /etc/nslcd.conf
+nslcd_user: nslcd
+nslcd_group: ldap
+nfsmount_conf_file: /etc/nfsmount.conf
