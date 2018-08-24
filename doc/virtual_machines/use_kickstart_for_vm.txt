@@ -1,0 +1,5 @@
+On virtual box you have to use two nics
+1 - Bridged
+2 - nat
+
+Lan on the boot (f12 to choose boot options)

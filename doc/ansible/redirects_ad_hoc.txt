@@ -1,0 +1,2 @@
+
+ansible bit_compute -m shell -a 'sudo cat /etc/passwd | grep slurm'

@@ -1,0 +1,1 @@
+var1, var2, var3 = re.match('bunch\((\w+), (\w+), (\w+)\)', input).group(1, 2, 3)

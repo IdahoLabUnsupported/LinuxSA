@@ -1,0 +1,53 @@
+This is a guy from redhat that works on the Ansible code
+https://willthames.github.io/devops-singapore-2016/01-intro.html#/set-up-target-hosts
+Ansible is most easily used if you can ssh as a normal user to a host without a password, and then sudo to root without a password.
+ssh-keygen -f ansible
+ssh-add ~/.ssh/ansible
+ssh-copy-id -f ~/.ssh/ansible $targethost
+
+
+
+This is an RHCE that shows how to "one-touch" provision boxes
+https://calgaryrhce.ca/blog/2016/02/03/ansible-pull-and-kickstart-for-one-touch-server-provisioning/
+In the kickstart file:
+useradd -p '<hashed and salted ansible user password>' ansible
+echo "ansible ALL=(root) NOPASSWD:ALL" | tee -a /etc/sudoers.d/ansible
+echo "Defaults:ansible !requiretty" | tee -a /etc/sudoers.d/ansible
+chmod 0440 /etc/sudoers.d/ansible
+wget http://<ks-server>/ansible.tar && tar -xvf ansible.tar -C /home/ansible
+echo localhost.localdomain >> /home/ansible/hosts
+chown -R ansible:ansible /home/ansible/.ssh
+
+
+
+
+DBA guy
+http://ronr.blogspot.com/2014/10/automating-vbox-creation-with-kickstart.html
+kick start
+/usr/sbin/useradd -m --gid wheel --groups wheel --comment 'Anisble Configuration' --uid 1342 ansible
+/bin/mkdir /home/ansible/.ssh
+wget http://thuis/key_ronr.pub
+mv key_ronr.pub /home/ansible/.ssh/authorized_keys
+/bin/chown -R ansible /home/ansible/.ssh
+/bin/chmod -R 700 /home/ansible/.ssh
+echo "ansible  ALL=(ALL)       NOPASSWD: ALL" >>/etc/sudoers
+wget http://thuis/ol70_host_keys.tar.gz
+gzip -dc ol70_host_keys.tar.gz|(cd /etc;tar -xf -)
+
+
+
+
+Keith Rogers RHEL developer:
+https://developers.redhat.com/blog/2016/09/02/how-to-install-and-configure-ansible-on-rhel/
+it’s recommended that you configure a keypair on your Ansible server by running ssh-keygen -t rsa and then exporting the public key (id_rsa.pub) to the authorized_keys file for the user (usually root) on the server you’re wanting to run commands against. This will allow you to seamlessly execute playbooks against your environment without requiring a password to be entered each time.
+
+
+
+
+
+
+
+
+
+
+

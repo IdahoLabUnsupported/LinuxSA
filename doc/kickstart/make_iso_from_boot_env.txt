@@ -1,0 +1,5 @@
+mkisofs -o /path/to/out.iso -b isolinux/isolinux.bin -c isolinux/boot.cat --no-emul-boot --boot-load-size 4 --boot-info-table -J -R -V CentOS_7_x86_64 .
+
+
+mkisofs -D -r -V "IMAGE NAME" -cache-inodes -J -l -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o /path/to/iso /path/to/boot/file 
+

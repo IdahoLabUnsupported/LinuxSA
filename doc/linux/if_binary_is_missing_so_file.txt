@@ -1,0 +1,24 @@
+
+Investigate error:
+
+    [prompt]$ ldd libname-of-lib.so
+        libglut.so.3 => /usr/lib64/libglut.so.3 (0x00007fb582b74000)
+        libGL.so.1 => /usr/lib64/libGL.so.1 (0x00007fb582857000)
+        libX11.so.6 => /usr/lib64/libX11.so.6 (0x00007fb582518000)
+        libIL.so.1 (0x00007fa0f2c0f000)
+        libcudart.so.4 => not found
+    
+The first three libraries show that there is a path resolution. The last two are problematic.
+
+The fix is to resolve dependencies of the last two libraries when linking the library libname-of-lib.so:
+Add the unresolved library path in /etc/ld.so.conf.d/name-of-lib-x86_64.conf and/or /etc/ld.so.conf.d/name-of-lib-i686.conf 
+Reload the library cache (/etc/ld.so.cache) with the command: sudo ldconfig 
+or
+Add library and path explicitly to the compiler/linker command: -lname-of-lib -L/path/to/lib 
+or
+Add the library path to the environment variable to fix runtime dependency: 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/lib
+Run Program:
+
+Set path: export LD_LIBRARY_PATH=/opt/lib:$LD_LIBRARY_PATH
+Run: prog

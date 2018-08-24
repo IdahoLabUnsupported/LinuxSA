@@ -1,0 +1,14 @@
+Run script:
+- hosts: '{{target}}'
+  become: true
+  tasks:
+    - name: Run some script 
+      script: /path/to/some/script.sh
+
+
+OR 
+ansible bit_compute -m script -a '/path/to/script'
+
+
+
+

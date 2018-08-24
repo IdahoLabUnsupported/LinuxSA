@@ -1,0 +1,5 @@
+install syslinux
+
+First make a copy of the .iso 
+
+use isohybrid  <name of .iso>

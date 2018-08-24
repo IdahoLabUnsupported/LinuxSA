@@ -1,0 +1,4 @@
+my $readme = <<END_README;
+hello $world
+
+END_README

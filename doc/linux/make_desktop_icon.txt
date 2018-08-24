@@ -1,0 +1,9 @@
+Open the file browser (the "home" folder shortcut is on the desktop by default)
+
+Click the "Computer" link on the left navigation panel and go to "/usr/shared/applications". This should now display all the applications icons/shortcuts in the browser window.
+
+Now here, I first tried dragging the Terminal icon over to the desktop, but got an error due to permissions (Error setting owner: Operation not permitted), (Any input on this would be appreciated).
+
+Instead do "Right-click Icon->Context Menu->Copy To". This will bring up another browser window titled "Select Destination". 
+
+Select (left-click) the "Desktop" folder in the left navigation panel, and the click the "Select" button in the bottom right.

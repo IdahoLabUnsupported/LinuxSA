@@ -1,0 +1,12 @@
+
+### uncompress
+tar -I lbzip2 -xvf <file.tar.bz2>
+
+### compress
+tar -I lbzip2 -cvpf <file.tar.bz2> <file>
+
+
+### much slower but you can limit the number of threads
+tar -cvpf bison.tar bison && lbzip2 -n 10 bison.tar
+
+

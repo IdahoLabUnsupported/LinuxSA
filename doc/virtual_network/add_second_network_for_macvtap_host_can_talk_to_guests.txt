@@ -1,0 +1,41 @@
+#create network
+
+#Make a file (/tmp/isolated) and put the following in it to create the new network
+
+
+<network>
+  <name>isolated</name>
+    <ip address='NRIPADDRESS' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='NRIPADDRESS.2' end='NRIPADDRESS.254' />
+    </dhcp>
+  </ip>
+</network>
+
+
+#Read files into KVM
+virsh net-define /tmp/isolated.xml
+virsh net-autostart isolated
+virsh net-start isolated
+
+
+#Add host to network
+
+#Edit (using "virsh edit $guestname") the configuration of each guest that uses direct (macvtap) for its network connection and add a new <interface> in the <devices> section similar to the following:
+
+<interface type='network'>
+  <source network='isolated'/>
+  <model type='virtio'/>
+</interface>
+
+
+shutdown, then restart each of these guests.
+
+In bare server CentOS build had to enable each of the network cards then restart the network
+
+
+
+
+
+
+

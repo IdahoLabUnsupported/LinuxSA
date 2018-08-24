@@ -1,0 +1,10 @@
+rsync -ahrvz user@server:/path/to/stuff .
+a = perserve all attributes
+h = human readable sizes
+r = recursive
+v = verbose
+z = compress for transfer (Faster I believe)
+
+
+
+

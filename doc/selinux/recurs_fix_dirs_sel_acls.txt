@@ -1,0 +1,10 @@
+
+#This will give you a dry run of what is going to happen
+restorecon -Rv -nF /var/lib/ldap
+
+#Real deal
+restorecon -Rv -F /var/lib/ldap
+
+
+#look in /var/log/audit/audit.log to see if it's working
+

@@ -1,0 +1,9 @@
+dn: automountkey=/home,automountMapName=auto.master,dc=your,dc=domain,dc=com
+objectClass: top
+objectClass: automount
+automountKey: /home
+automountInformation: auto_home -nobrowse
+
+dn: automountMapName=auto.home,dc=your,dc=domain,dc=com
+objectClass: automountMap
+automountMapName: auto.home

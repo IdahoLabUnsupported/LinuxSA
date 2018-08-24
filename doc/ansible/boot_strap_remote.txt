@@ -1,0 +1,1 @@
+ansible-playbook prep_cent_host.yml -u root --ask-pass --extra-vars "target=test_vm_cent"

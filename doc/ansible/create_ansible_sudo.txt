@@ -1,0 +1,8 @@
+#Need to setup keys for ansible user and root to get git repo
+
+mkdir /usr/local/home
+useradd -d /usr/local/home/ansible ansible
+echo "ansible ALL=(root) NOPASSWD:ALL" | tee -a /etc/sudoers.d/ansible
+echo 'Defaults:ansible !requiretty' | tee -a /etc/sudoers.d/ansible
+chmod 0440 /etc/sudoers.d/ansible
+

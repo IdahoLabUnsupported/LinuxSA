@@ -1,0 +1,5 @@
+dot files (hidden files) can be copied with:
+ .[!.]*
+
+cp /some/dir/.[!.]* /some/other/dir
+

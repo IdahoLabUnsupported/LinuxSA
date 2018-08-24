@@ -1,0 +1,2 @@
+iptables -I RH-Firewall -1 -INPUT -p tcp -m tcp –dport 5666 -j ACCEPT
+service iptables save

@@ -1,0 +1,1 @@
+for BOX in `seq 2 10`; do ansible ###.###.###.$BOX -b -m script -a "/path/to/some/script.bash $BOX" ; done

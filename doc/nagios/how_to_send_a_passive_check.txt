@@ -1,0 +1,9 @@
+On MONSERVER
+echo "[`date +%s`] PROCESS_SERVICE_CHECK_RESULT;HOSTNAME;test_critical;0;THIS IS ONLY A TEST" > /path/to/nagioshome/cmd/nagios.cmd
+
+From a remote host I think you have to use NSCA
+Might be able to use the check_dummy plugin, I saw that on several websites
+
+ceck_command                   check_dummy!2
+
+

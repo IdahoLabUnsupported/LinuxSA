@@ -1,0 +1,8 @@
+
+qemu-img create -f qcow2 /path/junk.qcow2 -S 20G
+
+
+virt-install --disk path=/path/junk1.qcow2,size=20 --ram=1024 --vcpus=1 --autostart --location=/path/CentOS-7-Image.iso --network=default  --name=junk1 --extra-args ks=http://path/to/kickstart
+
+
+virsh destroy junk1 && virsh undefine junk1

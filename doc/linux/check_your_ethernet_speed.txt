@@ -1,0 +1,8 @@
+ethtool $interface
+
+
+ethtool enp0s25
+look for speed not just advertised or supported
+
+
+

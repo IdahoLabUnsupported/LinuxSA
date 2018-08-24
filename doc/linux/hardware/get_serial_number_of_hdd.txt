@@ -1,0 +1,11 @@
+Had a hdd that failded and needed to replace it:
+
+Have 2 hdds in raid so I needed to know which one it was:
+
+#hdparm -i /dev/sdb | grep Serial
+ Model=#####, FwRev=####, SerialNo=#####
+  
+The number in SerialNo corresponds to the serial number printed on the outside of the hdd
+
+
+

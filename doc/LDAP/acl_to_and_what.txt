@@ -1,0 +1,20 @@
+Specifier	                Entities
+*	                        All, including anonymous and authenticated users
+anonymous	                Anonymous (non-authenticated) users
+users	                        Authenticated users
+self	                        User associated with target entry
+dn[.<basic-style>]=<regex>	Users matching a regular expression
+dn.<scope-style>=<DN>	        Users within scope of a DN
+
+
+
+Level	        Privileges	Description
+none =	        0	        no access
+disclose =	d	        needed for information disclosure on error
+auth =	        dx	        needed to authenticate (bind)
+compare =	cdx	        needed to compare
+search =	scdx	        needed to apply search filters
+read =	        rscdx	        needed to read search results
+write =	        wrscdx	        needed to modify/rename
+manage =	mwrscdx	        needed to manage
+

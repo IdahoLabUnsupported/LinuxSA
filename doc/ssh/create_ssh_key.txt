@@ -1,0 +1,28 @@
+On local machine
+ssh-keygen -t rsa -C "SOMETAG" -b 4096
+ssh-keygen -b 4096
+
+This will generate private and public key
+ONLY USE PUBLIC KEY
+
+The public key needs to be copied into the authorized_keys file on remote machine
+
+This should copy it ... 
+ssh-copy-id user@123.45.56.78
+
+if not ...
+
+On remote:
+cp pub key from local machine
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+cat pubkeyfromlocal > ~/.ssh/authorized_keys2
+chmod 600 ~/.ssh/authorized_keys2
+ln -s authorized_keys2 authorized_keys
+
+
+
+Then you should be able to login without password
+
+
+

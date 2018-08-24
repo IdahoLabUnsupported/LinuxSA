@@ -1,0 +1,3 @@
+
+### on the consumer (LDAP2)
+slapd -d -1 -c rid=123,csn=0  2>&1 | tee -a /root/ldap_log.log

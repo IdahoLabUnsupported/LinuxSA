@@ -1,0 +1,3 @@
+my @app_blocks = $lm_stat_output =~ /(Users\s+of\s+\S+:.*?(?=Users\s+of\s+\S+:|$))/sig;
+
+

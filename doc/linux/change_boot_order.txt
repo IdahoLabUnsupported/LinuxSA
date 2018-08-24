@@ -1,0 +1,10 @@
+grub2-set-default <number>
+
+Where <number> is the number of the order you want to boot from
+
+STARTS at 0
+
+grub2-set-default 1
+will grab the next boot option
+
+

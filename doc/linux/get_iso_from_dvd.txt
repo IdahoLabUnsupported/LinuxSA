@@ -1,0 +1,7 @@
+
+# isoinfo -d -i /dev/cdrom | grep -i -E 'block size|volume size' 
+Logical block size is: 2048
+Volume size is: 327867
+
+
+# dd if=/dev/cdrom of=test.iso bs=<block size from above> count=<volume size from above>

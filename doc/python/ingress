@@ -1,0 +1,5 @@
+### get base64 encoded phrase from a python class variable
+import get_base
+base1 = get_base.BaseWord()
+base = base64.b64decode(base1.baseword).rstrip()
+

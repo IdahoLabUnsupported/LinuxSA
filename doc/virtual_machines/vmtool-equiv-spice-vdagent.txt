@@ -1,0 +1,4 @@
+search for package called spice-vdagent:
+then you can copy and paste between and resize with window
+
+To resize with window you still have to check the box under view-> scale display

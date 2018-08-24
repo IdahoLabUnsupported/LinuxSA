@@ -1,0 +1,16 @@
+ldapsearch -x -b "ou=People,dc=your,dc=domain,dc=com" -H ldap://SERVER -LLL  -s sub  uid=USERNAME "objectclass=*" ATTR
+ldapsearch -x -b "ou=People,dc=your,dc=domain,dc=com" -H ldap://SERVER -LLL -ZZ -s sub  uid=USERNAME
+ldapsearch -x -b "ou=People,dc=your,dc=domain,dc=com" -H ldap://SERVER -LLL -ZZ -s sub  uid=USERNAME "objectclass=*" ATTR
+ldapsearch -x -b "ou=People,dc=your,dc=domain,dc=com" -H ldap://SERVER
+ldapsearch -x -b "cn=config" -LLL -H ldap://SERVER -o ldif-wrap=no
+ldapsearch -D "cn=Manager,dc=your,dc=domain,dc=com" -W -x -b cn=config -H ldap://SERVER -LLL -ZZ -o ldif-wrap=no 'olcDatabase={0}config'
+ldapsearch -D "cn=Manager,dc=your,dc=domain,dc=com" -W -x -b cn=config -H ldap://SERVER -LLL -ZZ -o ldif-wrap=no 'olcDatabase={1}config'
+ldapsearch -x -b "dc=your,dc=domain,dc=com" -H ldap://SERVER dn
+ldapsearch -x -s 'sub' -b cn=config -H ldap://SERVER dn
+ldapsearch -x -b "ou=policies,dc=your,dc=domain,dc=com" -H ldap://SERVER
+#See the cn=config tree
+ldapsearch -x -b cn=config -H ldap://SERVER -LLL -ZZ -o ldif-wrap=no cn
+ldapsearch -x -b "automountMapName=auto.home,dc=your,dc=domain,dc=com" -H ldap://SERVER -LLL  automountKey=USERNAME
+ldapsearch -x -b "dc=your,dc=domain,dc=com" -H ldap://SERVER dn
+### operational attributes add + at end (Need to have Manager to see them)
+ldapsearch -D "cn=Manager,dc=your,dc=domain,dc=com" -W -x uid=USERNAME +

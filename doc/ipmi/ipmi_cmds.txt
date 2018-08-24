@@ -1,0 +1,11 @@
+### Boot into pxe next boot
+ipmitool chassis bootdev pxe
+
+### Keep pxe as the first boot option
+ipmitool chassis bootdev pxe options=persistent
+
+
+ipmitool -H <IPADDRESS> -U root chassis bootdev pxe
+ipmitool  -H <IPADDRESS> -U root chassis power cycle
+
+

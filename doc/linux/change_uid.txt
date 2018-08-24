@@ -1,0 +1,5 @@
+vipw
+vipw -s
+vigr
+
+

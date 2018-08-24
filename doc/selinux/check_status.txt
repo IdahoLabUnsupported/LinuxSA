@@ -1,0 +1,6 @@
+sestatus
+sestatus -v
+
+
+
+

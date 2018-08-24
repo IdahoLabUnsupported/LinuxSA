@@ -1,0 +1,1 @@
+openssl x509 -in /path/to/cacert.pem -text

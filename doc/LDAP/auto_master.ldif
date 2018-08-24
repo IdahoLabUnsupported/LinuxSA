@@ -1,0 +1,4 @@
+dn: automountMapName=auto.master,dc=your,dc=domain,dc=com
+objectClass: top
+objectClass: automountMap
+automountMapName: auto.master

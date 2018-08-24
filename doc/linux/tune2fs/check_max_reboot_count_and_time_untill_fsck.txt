@@ -1,0 +1,5 @@
+
+for DISK in `fdisk -l | grep -P ^/dev | awk '{print $1}'`; do echo $DISK; tune2fs -l $DISK | grep -i -P 'max.*count|check.*interval|last.*checked'; echo -e "-----------------------\n\n"; done
+
+
+

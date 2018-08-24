@@ -1,0 +1,23 @@
+in the BIOS setup ipmi over lan
+Then you have to setup the password for the root user
+
+ipmitool -I open user list 1
+will show you which user is root
+have to have that especially if the allow NULL user is set to NO
+
+
+ipmitool user set password 2
+
+
+# ipmitool lan set 1 ipsrc static
+# ipmitool lan set 1 ipaddr <IPADDRESS>
+# ipmitool lan set 1 netmask 255.255.255.0
+# ipmitool lan set 1 defgw ipaddr <GATEWAY IP>
+# ipmitool lan set 1 defgw macaddr <GATEWAY MAC>
+# ipmitool lan set 1 arp respond on
+# ipmitool lan set 1 auth ADMIN MD5
+# ipmitool lan set 1 access on
+# ipmitool user set name 2 root
+# ipmitool user set password 2
+
+

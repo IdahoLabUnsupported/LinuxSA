@@ -1,0 +1,1 @@
+while [ 1 ]; do for PID in [0-9]*; do echo "PID = $PID with $(ls /proc/$PID/fd/ | wc -l) file descriptors"; done | sort -k 5,5| tail -10 >> /root/pids; echo -e "\n`date`\n" >> /root/pids; sleep 10; done

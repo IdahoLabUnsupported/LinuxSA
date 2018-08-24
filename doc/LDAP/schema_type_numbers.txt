@@ -1,0 +1,8 @@
+Name                    OID                             Description
+boolean                 1.3.6.1.4.1.1466.115.121.1.7    boolean value
+directoryString         1.3.6.1.4.1.1466.115.121.1.15   Unicode (UTF-8) string
+distinguishedName       1.3.6.1.4.1.1466.115.121.1.12   LDAP DN
+integer                 1.3.6.1.4.1.1466.115.121.1.27   integer
+numericString           1.3.6.1.4.1.1466.115.121.1.36   numeric string
+OID                     1.3.6.1.4.1.1466.115.121.1.38   object identifier
+octetString             1.3.6.1.4.1.1466.115.121.1.40   arbitrary octets

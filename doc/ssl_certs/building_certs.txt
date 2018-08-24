@@ -1,0 +1,31 @@
+
+
+### READ CERTS ###########################################
+#might need a -verify
+#Might nee to give the -config /path/to/config/openssl.cnf
+
+To read a cert
+openssl x509 -noout -text -in CERTNAME.crt
+
+To read a csr
+openssl req -noout -text -in CERTNAME.csr
+#########################################################
+
+
+
+### CREATE CERTS ####################################################################################################################################################################################################################################################################
+openssl genrsa -out <private_key_file>.key 2048
+openssl req -new -out <cert_sign_request>.csr -key <private_key_file>.key -config /path/to/cnf/openssl.cnf
+
+### we dump the csr and key into one file
+#openssl req -new -nodes -keyout newreq.pem -out newreq.pem -config /path/to/cnf/opennssl.cnf
+
+
+### we dump the csr and key into one file
+#openssl req -new -nodes -keyout newreq.pem -out newreq.pem -config /path/to/cnf/opennssl.cnf
+
+openssl x509 -req -days 3650 -in <csr_file>.csr -signkey <private_key_file>.key -out <name_that_you_want_for_crt>.crt -extensions v3_req -extfile /path/to/cnf/opennssl.cnf -CAkey /path/to/ca/private/key/cakey.pem -CA /path/to/ca/cert/cacert.pem -CAserial /path/to/serial/serial
+#probably a way to do this with openssl ca command but I couldn't get it to work
+#####################################################################################################################################################################################################################################################################################
+
+

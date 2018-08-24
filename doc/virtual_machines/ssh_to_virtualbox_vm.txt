@@ -1,0 +1,9 @@
+a new vm will have an iternal 10.0.2.xx address that you cannot ssh to
+
+add a new network interface and set it to host only adapter
+
+This will give you a 192.168 address that you can ssh to
+
+
+
+

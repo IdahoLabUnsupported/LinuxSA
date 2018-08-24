@@ -1,0 +1,7 @@
+smartd looks at your hardware:
+
+smartctl -a /dev/sdb 
+Will give you a readout of bad sectors
+
+
+

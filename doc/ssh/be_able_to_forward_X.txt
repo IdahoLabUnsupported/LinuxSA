@@ -1,0 +1,32 @@
+ssh -XY HOSTNAME
+
+
+then if you do firefox it will display on your screen
+firefox --no-remote
+
+If that still doesn't work do:
+ssh -XYv 
+
+if the login says "debug1: Remote: No xauth program; cannot forward with spoofing."
+
+  yum install xorg-x11-xauth
+
+Then it should work
+
+
+If you get 
+
+E233: cannot open displayE852: The child process failed to start the GUI
+Press ENTER or type command to continue
+
+
+sudo vi /etc/ssh/sshd_config
+
+X11Forwarding yes
+X11UseLocalhost no
+
+/etc/init.d/sshd reload
+
+yum install xauth
+
+

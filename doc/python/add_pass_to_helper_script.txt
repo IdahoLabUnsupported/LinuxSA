@@ -1,0 +1,3 @@
+class Secret:
+    word = 'put base64 encoded string here'
+python -m py_compile script_name

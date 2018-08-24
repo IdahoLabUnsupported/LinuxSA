@@ -1,0 +1,2 @@
+#Dont forget the comma ... that has to be there
+ansible-playbook -i '###.###.###.###,' playbooks/base_install.yml --extra-vars target=###.###.###.###

@@ -1,0 +1,11 @@
+From desktop:
+ssh -L SOMEPORT:REMOTEIP:SOMEPORT HOSTNAME
+
+This will log into SERVER and tunnel traffic through SOMEPORT 
+
+Leave that window open
+
+Still on desktop open browser and put:
+https://localhost:SOMEPORT/
+
+That will get the traffic tunneling through 

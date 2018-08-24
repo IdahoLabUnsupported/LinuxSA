@@ -1,0 +1,31 @@
+
+List quotas on a directory:
+isi quota quotas ls --path=/some/path
+
+Sorted:
+isi quota quotas ls --path=/some/path | sort -k 2
+
+
+User:
+isi quota quotas list --user=USERNAME
+
+
+
+isi status
+
+
+isi job jobs start treedelete --path /path/to/USER
+
+
+
+cp -Rlv src target
+
+
+### Check top 4 processes on each shelf
+isi_for_array -s 'top -d1|grep PID -A4'
+
+
+### Check out which user is slowing system down
+isi statistics client | more
+
+

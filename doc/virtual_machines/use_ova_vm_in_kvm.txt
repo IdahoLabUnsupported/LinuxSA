@@ -1,0 +1,9 @@
+.ova is really just a tar file
+
+tar -xvf file.ova
+
+Then you can just use the vmdk or convert it for kvm to qcow2
+
+qemu-img convert -O qcow2 file.vmdk file.qcow2
+
+

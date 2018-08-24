@@ -1,0 +1,1 @@
+ansible-playbook yum_upgrade_with_reboot_on_new_kernel.yml --extra-vars "target=cent_vms"

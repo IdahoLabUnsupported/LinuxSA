@@ -1,0 +1,6 @@
+scp -rp user@server:/path/to/stuff .
+
+
+r = recursive
+p = perserve ... DOES NOT PRESERVE OWNER AND GROUP ... USE RSYNC FOR THAT !!!!!!!!!!!!!!!!!1
+

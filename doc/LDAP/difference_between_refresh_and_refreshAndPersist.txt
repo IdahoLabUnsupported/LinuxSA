@@ -1,0 +1,10 @@
+The LDAP Content Synchronization protocol has two operation types: refreshOnly and refreshAndPersist. The operation type is specified by the type parameter. In the refreshOnly operation, the next synchronization search operation is periodically rescheduled at an interval time after each synchronization operation finishes. The interval is specified by the interval parameter. It is set to one day by default. In the refreshAndPersist operation, a synchronization search remains persistent in the provider slapd instance. Further updates to the master replica will generate searchResultEntry to the consumer slapd as the search responses to the persistent synchronization search.
+
+
+I think that means refreshOnly is pull
+refreshAndPersist is push
+
+
+
+
+
